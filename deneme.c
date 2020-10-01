@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 char h[9];
- int a, b;
- int sira =0;
+int a, b;
+int sira =0;
 int arraySize = sizeof(h)/sizeof(h[0]);
 
-int main()
+void print_table()
 {
     printf("\t    X  O  X \n\n");
 
@@ -15,11 +15,14 @@ int main()
     printf("\t  4  |  5  |  6  \n");
     printf("\t--------------\n");
     printf("\t  7  |  8  |  9  \n");
+}
 
 
-    while(sira<9)
+void make_move()
 {
+
     if(sira%2 == 0)
+    {
 
     printf("Move for player 1 (1-9): ");
     scanf("%d", &a);
@@ -34,12 +37,21 @@ int main()
     printf("\t %c  | %c  | %c  \n", h[6],h[7],h[8]);
     ++sira;
 
+    
+
+
+    }
+
     else
+    {
 
     printf("Move for player 2 (1-9): ");
     scanf("%d", &b);
     if(b<1 || b>9)
+    {
         printf("\nYou logged invalid number.");
+    }
+
     h[b-1]= 'o';
 
 
@@ -50,13 +62,28 @@ int main()
     printf("\t %c  | %c  | %c  \n", h[6],h[7],h[8]);
     ++sira;
 
+    }
+}
 
-
-
+void get_winner()
+{
+    if(h[0]==h[1]==h[2]== 'x'){
+        printf("\nWinner is player 1!");
     }
 
+}
+
+
+
+int main()
+{
+    print_table();
+    while(sira<9)
+    {
+        make_move();
+        get_winner();
+    }
 
     return 0;
 }
-
 
